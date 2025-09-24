@@ -18,7 +18,6 @@ import { ferdinand, marianne, dario, renfield, evangelina } from './chapter3'
 import {
   lorraine,
   allsRight,
-  nikke,
   calibur,
   lute,
   dragonKiller,
@@ -271,7 +270,6 @@ export default {
   evangelina,
   lorraine,
   allsRight,
-  nikke,
   calibur,
   lute,
   dragonKiller,

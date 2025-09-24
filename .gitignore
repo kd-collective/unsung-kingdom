@@ -4,4 +4,5 @@ ignore
 /nw/*
 !/nw/public
 /public/js/*.bundle.js
+/public/js/*.bundle.js.*
 /public/img/tilesets/extruded/*.png

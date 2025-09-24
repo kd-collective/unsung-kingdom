@@ -14,8 +14,7 @@ const replaceToExtrudedTiles = list => {
 module.exports = (_env, argv) => ({
   entry: {
     app: './src/index.js',
-    // guide: './src/guide.js',
-    vendor: ['phaser']
+    // guide: './src/guide.js'
   },
   output: {
     path: path.resolve(__dirname, 'public/js'),
@@ -30,14 +29,16 @@ module.exports = (_env, argv) => ({
         loader: 'babel-loader',
         options: {
           presets: [
-            ['env', { targets: { node: 'current' } }]
+            ['@babel/preset-env', { targets: { node: 'current' } }]
           ]
         }
       }
     ]
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'public'),
+    static: {
+      directory: path.resolve(__dirname, 'public')
+    },
     port: 8080
   },
   plugins: [
@@ -70,8 +71,15 @@ module.exports = (_env, argv) => ({
   externals: {},
   optimization: {
     splitChunks: {
-      name: 'vendor',
-      chunks: 'initial'
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all',
+          priority: 10,
+          enforce: true
+        }
+      }
     }
   },
   performance: { hints: false }
